@@ -1,10 +1,9 @@
 package com.order_mangment_notficatetion.demo.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Order {
-    private List<Product> cart =new ArrayList<Product>();
+public class DetailsOrder {
+    Cart cart;
     private Double totalPrice;
     private Double shipingFess;
     int id;
@@ -13,18 +12,18 @@ public class Order {
         return id;
     }
 
-    public Order() {
+    public DetailsOrder() {
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public List<Product> getCart() {
+    public Cart getCart() {
         return cart;
     }
 
-    public void setCart(List<Product> cart) {
+    public void setCart(Cart cart) {
         this.cart = cart;
     }
 
@@ -43,7 +42,7 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "cart=" + cart +
+                "cart=" + cart.toString() +
                 ", totalPrice=" + totalPrice +
                 ", shipingFess=" + shipingFess +
                 '}';
@@ -53,12 +52,12 @@ public class Order {
         this.shipingFess = shipingFess;
     }
 
-    public Order(int id,List<Product> cart, Double totalPrice, Double shipingFess) {
-        this.cart = cart;
-        this.totalPrice = totalPrice;
-        this.shipingFess = shipingFess;
-        this.id=id;
-    }
+//    public DetailsOrder(int id, List<Product> cart, Double totalPrice, Double shipingFess) {
+//        this.cart = cart;
+//        this.totalPrice = totalPrice;
+//        this.shipingFess = shipingFess;
+//        this.id=id;
+//    }
 
 
 

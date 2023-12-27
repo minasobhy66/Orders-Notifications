@@ -1,10 +1,10 @@
 package com.order_mangment_notficatetion.demo.model;
 
 public class Product {
-        int serial, quantity;
-        String name, vendor;
-        double price;
-        Category category;
+       private int serial, quantity;
+        private String name, vendor;
+        private double price;
+       private Category category;
 
         public void setName(String name) {
             this.name = name;
@@ -32,8 +32,11 @@ public class Product {
         }
         public int getSerial() {
             return serial;
-        }
-        public String getVendor() {
+        }        public double getPriceforQuantity() {
+        return price*quantity;
+    }
+
+    public String getVendor() {
             return vendor;
         }
         public int getQuantity() {
