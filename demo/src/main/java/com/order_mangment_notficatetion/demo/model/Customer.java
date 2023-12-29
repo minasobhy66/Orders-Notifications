@@ -1,11 +1,9 @@
 package com.order_mangment_notficatetion.demo.model;
 
-import com.order_mangment_notficatetion.demo.Service.Order;
-
 public class Customer {
 
         String name, address, mobile, email, password;
-        Order order;
+       Order order;
 
     public Order getOrder() {
         return order;

@@ -1,9 +1,9 @@
-package com.order_mangment_notficatetion.demo.Service;
+package com.order_mangment_notficatetion.demo.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompoundOrder extends Order{
+public class CompundOrder extends Order {
     List<Order> orders=new ArrayList<>();
     @Override
     public void pay() {
@@ -14,16 +14,17 @@ public class CompoundOrder extends Order{
 
     @Override
     public void addOrder(Order simpleorder) {
-    orders.add(simpleorder);
+        orders.add(simpleorder);
     }
 
     @Override
     public void removeOrder(Order simpleorder) {
-    orders.remove(simpleorder);
+        orders.remove(simpleorder);
     }
 
     @Override
     public Order getOrder(int id) {
-       return null;
+        return null;
     }
+
 }

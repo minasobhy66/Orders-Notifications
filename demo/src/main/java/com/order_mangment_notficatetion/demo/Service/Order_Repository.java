@@ -1,16 +1,17 @@
 package com.order_mangment_notficatetion.demo.Service;
 
-import com.order_mangment_notficatetion.demo.model.DetailsOrder;
+import com.order_mangment_notficatetion.demo.model.Order;
 
-import java.util.List;
+import java.util.Map;
 
 public interface Order_Repository {
-    DetailsOrder addOrder (DetailsOrder detailsOrder);
-    Boolean removeOrder (DetailsOrder detailsOrder);
+    Order addOrder (Order Order);
 
-    DetailsOrder uptadeOrder(DetailsOrder detailsOrder);
-    DetailsOrder getOrder(int id);
+    Boolean removeOrder (Order order);
 
-    List<DetailsOrder> getAllrOrder();
+    Order uptadeOrder(Order order);
+    Order getOrder(int id);
+
+    Map<Integer, Order> getAllrOrder();
 
 }

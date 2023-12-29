@@ -1,43 +1,41 @@
 package com.order_mangment_notficatetion.demo.Service;
 
 import com.order_mangment_notficatetion.demo.Datebase;
-import com.order_mangment_notficatetion.demo.model.DetailsOrder;
+import com.order_mangment_notficatetion.demo.model.Order;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Map;
+
 @Service
 public class InmomeryOrderRepository implements Order_Repository{
 
+
+
     @Override
-    public DetailsOrder addOrder(DetailsOrder detailsOrder) {
-        Datebase.List_order.put(detailsOrder.getId(), detailsOrder);
-        return detailsOrder;
+    public Order addOrder(Order order) {
+        Datebase.List_order.put(order.getId(), order);
+        return order;
 
     }
 
     @Override
-    public Boolean removeOrder(DetailsOrder detailsOrder) {
-        return Datebase.List_order.remove(detailsOrder.getId(), detailsOrder);
+    public Boolean removeOrder(Order order) {
+        return Datebase.List_order.remove(order.getId(),order);
     }
-
     @Override
-    public DetailsOrder uptadeOrder(DetailsOrder detailsOrder) {
+    public Order uptadeOrder(Order order) {
         return null;
     }
 
     @Override
-    public DetailsOrder getOrder(int id) {
-        if(Datebase.List_order.get(id)!=null){
-            return Datebase.List_order.get(id) ;
-        }
-        return  null;
+    public Order getOrder(int id) {
+        return Datebase.List_order.get(id);
     }
-
 
     @Override
-    public List<DetailsOrder> getAllrOrder() {
-        return null;
-    }
+    public Map<Integer, Order> getAllrOrder() {
 
+        return Datebase.List_order;
+    }
 
 }

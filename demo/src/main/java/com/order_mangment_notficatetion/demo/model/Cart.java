@@ -5,25 +5,57 @@ import java.util.List;
 
 public class Cart {
     private List<Product> cart =new ArrayList<Product>();
+    double total_price;
     public  void addProduct(Product product){
         cart.add(product);
     }
-    public void removeProduct(Product product){
-        cart.remove(product);
-    }
-    public double total_price(){
-        double result=0;
+
+    public double getTotal_price() {
+        total_price=0;
         for (int i = 0; i < cart.size(); i++) {
-            result+=cart.get(i).getPriceforQuantity();
-        }
-        return result;
+        total_price+=cart.get(i).getPriceforQuantity();
     }
+        return total_price;
+    }
+
+    public void setTotal_price(double total_price) {
+        this.total_price = total_price;
+    }
+
+    public  Product getProduct (int id){
+        for (int i = 0; i < cart.size(); i++) {
+            if(cart.get(i).getSerial()==id ) {
+                return cart.get(i);
+            }
+        }
+    return null ;
+    }
+
+    public List<Product> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Product> cart) {
+        this.cart = cart;
+    }
+
+    public void removeProduct(int id){
+        for (int i = 0; i < cart.size(); i++) {
+            if(cart.get(i).getSerial()==id)   ;
+            cart.remove(cart.get(i));
+        }
+
+    }
+
 
     @Override
     public String toString() {
-        return "Cart{" +
-                "cart=" + cart +
-                '}';
+        String JScart="";
+        for (int i = 0; i < cart.size(); i++) {
+         JScart+=cart.get(i).toString()+',';
+
+        }
+        return JScart;
     }
 
     public Cart() {}
