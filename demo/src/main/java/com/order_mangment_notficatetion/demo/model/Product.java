@@ -1,14 +1,24 @@
 package com.order_mangment_notficatetion.demo.model;
 
 public class Product {
-    private int serial, quantity;
+    private int id, quantity;
     private String name, vendor;
     private double price;
     private Category category;
+
+
+    public Product(Product product) {
+        this.id = product.id;
+        this.name = product.name;
+        this.vendor = product.vendor;
+        this.price = product.price;
+        this.category =product.category;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
-                "serial=" + serial +
+                "id=" + id +
                 ", quantity=" + quantity +
                 ", name='" + name + '\'' +
                 ", vendor='" + vendor + '\'' +
@@ -19,8 +29,8 @@ public class Product {
 
 
 
-    public Product(int serial, int quantity, String name, String vendor, double price, Category category) {
-        this.serial = serial;
+    public Product(int id, int quantity, String name, String vendor, double price, Category category) {
+        this.id = id;
         this.quantity = quantity;
         this.name = name;
         this.vendor = vendor;
@@ -43,8 +53,8 @@ public class Product {
         this.price = price;
     }
 
-    public void setSerial(int serial) {
-        this.serial = serial;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setVendor(String vendor) {
@@ -63,8 +73,8 @@ public class Product {
         return price;
     }
 
-    public int getSerial() {
-        return serial;
+    public int getId() {
+        return id;
     }
 
     public double getPriceforQuantity() {
@@ -77,5 +87,8 @@ public class Product {
 
     public int getQuantity() {
         return quantity;
+    }
+    public void setQuantity(int quantity){
+        this.quantity=quantity;
     }
 }

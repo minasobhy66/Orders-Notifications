@@ -10,15 +10,22 @@ import java.util.List;
 
 @Service
 public class ProductService {
-   private Product product;
+
+   private  Product product;
+   private final Datebase datebase;
+    @Autowired
+   public ProductService(Datebase datebase){
+       this.datebase=datebase;
+   }
 public Boolean AddProduct(Product p){
     try {
-        if(Datebase.stock.get(p.getSerial()) != null){
+        if(Datebase.stock.get(p.getId()) != null){
             return false;
         }
-        Datebase.stock.put(p.getSerial(), p);
+        else
+        Datebase.stock.put(p.getId(), p);
     } catch (Exception e) {
-        System.out.println("Exception in addPerson as" + e.getMessage());
+        System.out.println("Exception in add product as" + e.getMessage());
         return false;
     }
     return true;
@@ -26,5 +33,8 @@ public Boolean AddProduct(Product p){
 }
 public Product GetProduct( int Serial){
     return Datebase.stock.get(Serial);}
+    public  List<Product> getproducts() {
+        return datebase.getproducts();
+    }
 
 }

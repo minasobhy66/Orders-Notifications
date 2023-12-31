@@ -1,9 +1,35 @@
 package com.order_mangment_notficatetion.demo.model;
 
+import com.order_mangment_notficatetion.demo.CustomerDatabase;
+
 public class Customer {
 
-        String name, address, mobile, email, password;
-       Order order;
+       private String name, address, mobile, email, password;
+       private Order order;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+      private   double balance;
+
+
+
+
+    public Customer(String name, String address, String mobile, String email, String password, double balance) {
+        this.id = CustomerDatabase.get_size()+1;
+        this.name = name;
+        this.address = address;
+        this.mobile = mobile;
+        this.email = email;
+        this.password = password;
+        this.balance = balance;
+    }
 
     public Order getOrder() {
         return order;
@@ -13,8 +39,9 @@ public class Customer {
         this.order = order;
     }
 
-    double balance;
-
+    //public int getid() {
+      //  return id;
+    //}
         public double getBalance() {
             return balance;
         }
