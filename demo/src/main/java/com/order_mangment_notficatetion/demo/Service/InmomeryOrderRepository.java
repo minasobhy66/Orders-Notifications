@@ -28,7 +28,7 @@ public class InmomeryOrderRepository implements Order_Repository{
     }
 
     @Override
-    public Order getOrder(int id) {
+    public  Order getOrder(int id) {
         return Datebase.List_order.get(id);
     }
 
@@ -37,5 +37,7 @@ public class InmomeryOrderRepository implements Order_Repository{
 
         return Datebase.List_order;
     }
-
+    public static int setid(){
+        return Datebase.List_order.size()+1;
+    }
 }

@@ -4,25 +4,37 @@ import com.order_mangment_notficatetion.demo.model.*;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ImpSimpleOrderService implements SimpleOrderService{
-    InmomeryOrderRepository Db;
-    Order order=new SimpleOrder();
+public class ImpSimpleOrderService {
+    InmomeryOrderRepository Db=new InmomeryOrderRepository();
+    MomeryCustomerRepo customerRepo=new MomeryCustomerRepo();
 
-    @Override
-    public Order getOrder( ) {
-        return order;
+
+    public Order getOrder( int id) {
+        return Db.getOrder(id);
     }
 
-    @Override
     public boolean addOrder(Order order) {
 
         return false;
     }
 
-    @Override
-    public boolean makeOrder(Cart cart, Customer customer) {
-        return false;
+//public boolean pay_order(Order order,int customerId ){
+//
+//}
+    public boolean makeOrder(Cart cart,int customerId) {
+        try {
+            if (customerRepo.getCustomerByID(customerId) != null) {
+                Order order=new Order(customerId,cart);
+                Db.addOrder(order);
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println("eror in MakerOrder because"+e.getMessage());;
+            return false;
+        }
     }
+
 
 }
 

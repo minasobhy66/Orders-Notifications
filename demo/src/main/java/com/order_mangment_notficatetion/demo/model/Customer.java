@@ -2,8 +2,47 @@ package com.order_mangment_notficatetion.demo.model;
 
 public class Customer {
 
-        String name, address, mobile, email, password;
-       Order order;
+       private String name, address, mobile, email, password;
+       private Order order;
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", order=" + order +
+                ", id=" + id +
+                ", balance=" + balance +
+                '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+      private   double balance;
+
+
+    public Customer() {
+    }
+
+    public Customer(int id,String name, String address, String mobile, String email, String password, double balance) {
+        this.name = name;
+        this.id=id;
+        this.address = address;
+        this.mobile = mobile;
+        this.email = email;
+        this.password = password;
+        this.balance = balance;
+    }
 
     public Order getOrder() {
         return order;
@@ -13,7 +52,6 @@ public class Customer {
         this.order = order;
     }
 
-    double balance;
 
         public double getBalance() {
             return balance;
