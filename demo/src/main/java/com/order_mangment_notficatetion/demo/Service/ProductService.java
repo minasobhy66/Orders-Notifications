@@ -2,10 +2,7 @@ package com.order_mangment_notficatetion.demo.Service;
 
 import com.order_mangment_notficatetion.demo.Datebase;
 import com.order_mangment_notficatetion.demo.model.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 @Service

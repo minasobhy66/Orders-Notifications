@@ -7,7 +7,10 @@ import com.order_mangment_notficatetion.demo.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
+import java.util.*;
+
+
 
 @RestController
 @RequestMapping("/product")
@@ -45,4 +48,4 @@ public class ProductControler {
     public List<Product>getproducts(){
         return productService.getproducts();
     }
-}
+

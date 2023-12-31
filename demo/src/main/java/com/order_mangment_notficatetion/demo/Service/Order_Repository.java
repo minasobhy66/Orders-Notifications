@@ -10,7 +10,7 @@ public interface Order_Repository {
     Boolean removeOrder (Order order);
 
     Order uptadeOrder(Order order);
-    Order getOrder(int id);
+  Order getOrder(int id);
 
     Map<Integer, Order> getAllrOrder();
 

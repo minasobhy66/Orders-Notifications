@@ -1,20 +1,34 @@
 package com.order_mangment_notficatetion.demo.model;
 
+import com.order_mangment_notficatetion.demo.Service.InmomeryOrderRepository;
+
 import java.util.Date;
 
-public abstract class Order  {
+public  class Order  {
    private Date dataOrder;
-    private Customer customer;
+    private int customer_id;
     private Cart cart;
     private Double shipingFess;
+    private double Total_amount;
     private Stauts stauts;
+
+    public double getTotal_amount() {
+        return shipingFess+ cart.getTotal_price();
+    }
+
+    public void setTotal_amount(double total_amount) {
+        Total_amount = total_amount;
+    }
+
     private int id;
     public Order() {
     }
-    public Order(Customer customer, Cart cart, int id) {
-        this.customer = customer;
+    public Order(int customer, Cart cart) {
+        this.customer_id = customer;
         this.cart = cart;
-        this.id = id;
+        this.id = InmomeryOrderRepository.setid();
+        this.stauts=Stauts.CREATE;
+        this.shipingFess=30.0;
     }
 
 
@@ -61,18 +75,25 @@ public abstract class Order  {
     }
 
 
-    public Customer getCustomer() {
-        return customer;
+    public int getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public abstract void pay();
-    public  abstract  void addOrder(Order simpleorder);
-    public  abstract void removeOrder(Order simpleorder);
-    public abstract Order getOrder(int id);
 
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "dataOrder=" + dataOrder +
+                ", customer_id=" + customer_id +
+                ", cart=" + cart.toString() +
+                ", shipingFess=" + shipingFess +
+                ", Total_amount=" + Total_amount +
+                ", stauts=" + stauts +
+                ", id=" + id +
+                '}';
+    }
 }

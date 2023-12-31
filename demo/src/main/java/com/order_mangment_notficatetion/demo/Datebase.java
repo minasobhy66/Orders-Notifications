@@ -20,6 +20,7 @@ public class Datebase {
            stock.put(i, product);
        }
    }
+
     public static void test_set() {
        for (int i = 0; i < 5; i++) {
             stock.put(i, product);

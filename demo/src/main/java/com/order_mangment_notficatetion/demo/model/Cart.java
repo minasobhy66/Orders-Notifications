@@ -24,7 +24,7 @@ public class Cart {
 
     public  Product getProduct (int id){
         for (int i = 0; i < cart.size(); i++) {
-            if(cart.get(i).getSerial()==id ) {
+            if(cart.get(i).getId()==id ) {
                 return cart.get(i);
             }
         }
@@ -41,7 +41,7 @@ public class Cart {
 
     public void removeProduct(int id){
         for (int i = 0; i < cart.size(); i++) {
-            if(cart.get(i).getSerial()==id)   ;
+            if(cart.get(i).getId()==id)   ;
             cart.remove(cart.get(i));
         }
 

@@ -7,6 +7,21 @@ public class Customer {
        private String name, address, mobile, email, password;
        private Order order;
 
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", order=" + order +
+                ", id=" + id +
+                ", balance=" + balance +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
@@ -24,12 +39,11 @@ public class Customer {
     public Customer(String name, String address, String mobile, String email, String password, double balance) {
         this.id = CustomerDatabase.get_size()+1;
         this.name = name;
-        this.address = address;
-        this.mobile = mobile;
-        this.email = email;
-        this.password = password;
-        this.balance = balance;
+
+    public Customer() {
     }
+
+
 
     public Order getOrder() {
         return order;
@@ -39,9 +53,6 @@ public class Customer {
         this.order = order;
     }
 
-    //public int getid() {
-      //  return id;
-    //}
         public double getBalance() {
             return balance;
         }
