@@ -1,4 +1,4 @@
-package com.order_mangment_notficatetion.demo.Service;
+package com.order_mangment_notficatetion.demo.Repositery;
 
 import com.order_mangment_notficatetion.demo.Datebase;
 import com.order_mangment_notficatetion.demo.model.Order;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-public class InmomeryOrderRepository implements Order_Repository{
+public class MomeryOrderRepo implements Order_Repository{
 
 
 

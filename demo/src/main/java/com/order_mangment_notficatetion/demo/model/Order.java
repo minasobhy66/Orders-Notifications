@@ -1,6 +1,6 @@
 package com.order_mangment_notficatetion.demo.model;
 
-import com.order_mangment_notficatetion.demo.Service.InmomeryOrderRepository;
+import com.order_mangment_notficatetion.demo.Repositery.MomeryOrderRepo;
 
 import java.util.Date;
 
@@ -26,7 +26,7 @@ public  class Order  {
     public Order(int customer, Cart cart) {
         this.customer_id = customer;
         this.cart = cart;
-        this.id = InmomeryOrderRepository.setid();
+        this.id = MomeryOrderRepo.setid();
         this.stauts=Stauts.CREATE;
         this.shipingFess=30.0;
     }

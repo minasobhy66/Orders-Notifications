@@ -1,6 +1,7 @@
 package com.order_mangment_notficatetion.demo.Contorler;
 
 import com.order_mangment_notficatetion.demo.Datebase;
+import com.order_mangment_notficatetion.demo.Repositery.MomeryProductRepo;
 import com.order_mangment_notficatetion.demo.Service.CartService;
 import com.order_mangment_notficatetion.demo.model.Cart;
 import com.order_mangment_notficatetion.demo.model.Product;
@@ -13,9 +14,10 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/cart")
 public class CartControler {
-    @Autowired
+@Autowired
    private CartService cartService;
     private Cart cart;
+  private  MomeryProductRepo momeryProductRepo;
 
 
     @PostMapping("/add")
@@ -46,7 +48,7 @@ public class CartControler {
     @DeleteMapping("/del")
     //the api for delet item from cart
     public Response removeItemCart(@RequestParam int id) {
-        Product p= Datebase.stock.get(id);
+        Product p= momeryProductRepo.getProduct(id);
         boolean res = cartService.Removeitem(p);
         Response response = new Response();
         if (!res) {

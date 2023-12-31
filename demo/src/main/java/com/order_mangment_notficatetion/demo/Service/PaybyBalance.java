@@ -1,13 +1,12 @@
 package com.order_mangment_notficatetion.demo.Service;
 
 import com.order_mangment_notficatetion.demo.Datebase;
+import com.order_mangment_notficatetion.demo.Repositery.MomeryOrderRepo;
 import com.order_mangment_notficatetion.demo.model.Order;
 import com.order_mangment_notficatetion.demo.model.Stauts;
 
-import java.util.Date;
-
 public class PaybyBalance implements paymentService {
-    InmomeryOrderRepository repository=new InmomeryOrderRepository();
+    MomeryOrderRepo repository=new MomeryOrderRepo();
 
     public boolean checkBalnce(double amount, double balance) {
         if (amount < balance) {

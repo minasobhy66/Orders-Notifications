@@ -1,30 +1,31 @@
 package com.order_mangment_notficatetion.demo.Service;
 
-import com.order_mangment_notficatetion.demo.Datebase;
+
+import com.order_mangment_notficatetion.demo.Repositery.MomeryProductRepo;
 import com.order_mangment_notficatetion.demo.model.Cart;
 import com.order_mangment_notficatetion.demo.model.Product;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CartService {
-
+    private MomeryProductRepo momeryProductRepo=new MomeryProductRepo();
     Cart cart =new Cart();
     public int Additem( int id,int quantity) {
         try {
-            Product product = new Product(Datebase.stock.get(id));
+            Product product = new Product(momeryProductRepo.getProduct(id));
             if (cart.getProduct(product.getId()) != null) {
                 return 1;
             }
-            if (Datebase.stock.get(id) != null) {
-                if (quantity > Datebase.stock.get(id).getQuantity()) {
+            if (momeryProductRepo.getProduct(id) != null) {
+                if (quantity >momeryProductRepo.getProduct(id).getQuantity()) {
                     System.out.println(product.getQuantity());
                     return 4;
                 } else {
                     product.setQuantity(quantity);
                     cart.addProduct(product);
                     int m=0;
-                    m=Datebase.stock.get(id).getQuantity()-quantity;
-                    Datebase.stock.get(id).setQuantity(m);
+                    m=momeryProductRepo.getProduct(id).getQuantity()-quantity;
+                    momeryProductRepo.getProduct(id).setQuantity(m);
                     return 0;
                 }
             }

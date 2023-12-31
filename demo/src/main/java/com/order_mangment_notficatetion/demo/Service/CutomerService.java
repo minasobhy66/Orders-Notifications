@@ -1,19 +1,13 @@
 package com.order_mangment_notficatetion.demo.Service;
 
-import com.order_mangment_notficatetion.demo.Datebase;
+import com.order_mangment_notficatetion.demo.Repositery.MomeryCustomerRepo;
 import com.order_mangment_notficatetion.demo.model.Customer;
-import com.order_mangment_notficatetion.demo.CustomerDatabase;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class CutomerService {
-    private final CustomerDatabase customerDatabase;
-    @Autowired
-    public CutomerService(CustomerDatabase customerDatabase) {
-        this.customerDatabase = customerDatabase;
-    }
+    private MomeryCustomerRepo customerDatabase= new MomeryCustomerRepo();
     public boolean registerCustomer(Customer customer) {
         String cutomer_email=customer.getEmail();
         if(customerDatabase.getCustomerEmail(cutomer_email)!=null){

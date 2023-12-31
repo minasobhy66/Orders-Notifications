@@ -1,19 +1,21 @@
 package com.order_mangment_notficatetion.demo.Service;
 
 import com.order_mangment_notficatetion.demo.Datebase;
+import com.order_mangment_notficatetion.demo.Repositery.MomeryProductRepo;
 import com.order_mangment_notficatetion.demo.model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 
 @Service
 public class ProductService {
 
    private  Product product;
-   private final Datebase datebase;
-    @Autowired
-   public ProductService(Datebase datebase){
-       this.datebase=datebase;
-   }
+   private  MomeryProductRepo momeryProductRepo =new MomeryProductRepo();
+
 public Boolean AddProduct(Product p){
     try {
         if(Datebase.stock.get(p.getId()) != null){
@@ -30,8 +32,8 @@ public Boolean AddProduct(Product p){
 }
 public Product GetProduct( int Serial){
     return Datebase.stock.get(Serial);}
-    public  List<Product> getproducts() {
-        return datebase.getproducts();
+    public Map<Integer, Product> getproducts() {
+        return momeryProductRepo.getAllProduct();
     }
 
 }

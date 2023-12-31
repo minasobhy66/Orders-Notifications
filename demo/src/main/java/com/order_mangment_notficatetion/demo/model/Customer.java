@@ -1,6 +1,6 @@
 package com.order_mangment_notficatetion.demo.model;
 
-import com.order_mangment_notficatetion.demo.CustomerDatabase;
+import com.order_mangment_notficatetion.demo.Repositery.MomeryCustomerRepo;
 
 public class Customer {
 
@@ -36,9 +36,25 @@ public class Customer {
 
 
 
-    public Customer(String name, String address, String mobile, String email, String password, double balance) {
-        this.id = CustomerDatabase.get_size()+1;
+    public Customer(Customer customer) {
+        this.id = MomeryCustomerRepo.get_size() + 1;
+        this.name =customer.getName();
+        this.address=customer.getAddress();
+        this.mobile=customer.getMobile();
+        this.email=customer.getEmail();
+        this.password=customer.getPassword();
+        this.balance= customer.getBalance();
+    }
+
+    public Customer(int id,String email, String password,String name, String mobile, String address, double balance) {
         this.name = name;
+        this.address = address;
+        this.mobile = mobile;
+        this.email = email;
+        this.password = password;
+        this.id = id;
+        this.balance = balance;
+    }
 
     public Customer() {
     }

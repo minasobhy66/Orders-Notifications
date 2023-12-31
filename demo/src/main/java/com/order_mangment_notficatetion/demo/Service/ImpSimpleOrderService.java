@@ -1,11 +1,13 @@
 package com.order_mangment_notficatetion.demo.Service;
 
+import com.order_mangment_notficatetion.demo.Repositery.MomeryOrderRepo;
+import com.order_mangment_notficatetion.demo.Repositery.MomeryCustomerRepo;
 import com.order_mangment_notficatetion.demo.model.*;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ImpSimpleOrderService {
-    InmomeryOrderRepository Db=new InmomeryOrderRepository();
+    MomeryOrderRepo Db=new MomeryOrderRepo();
     MomeryCustomerRepo customerRepo=new MomeryCustomerRepo();
 
 

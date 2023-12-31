@@ -1,4 +1,4 @@
-package com.order_mangment_notficatetion.demo.Service;
+package com.order_mangment_notficatetion.demo.Repositery;
 
 import com.order_mangment_notficatetion.demo.model.Order;
 
