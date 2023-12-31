@@ -1,5 +1,6 @@
 package com.order_mangment_notficatetion.demo.Contorler;
 
+import com.order_mangment_notficatetion.demo.Datebase;
 import com.order_mangment_notficatetion.demo.Service.CartService;
 import com.order_mangment_notficatetion.demo.model.Cart;
 import com.order_mangment_notficatetion.demo.model.Product;
@@ -19,27 +20,33 @@ public class CartControler {
 
     @PostMapping("/add")
     //the api for add item to cart
-    public Response addItemCart(@RequestBody Product p) {
-        int res = cartService.Additem(p);
+    public Response addItemCart(@RequestParam("id") int id ,@RequestParam ("quantity")int quantity ) {
+        int res = cartService.Additem(id,quantity);
         Response response = new Response();
-        if (res==0) {
-            response.setStatus(false);
-            response.setMessage("the item not Exists in stock ");
-            return response;
+        switch (res) {
+            case 0:
+                response.setStatus(true);
+                response.setMessage("the item add to cart successfully");
+                return response;
+            case 1:
+                response.setStatus(false);
+                response.setMessage("the item alredy exit in cart ");
+                return response;
+            case 4:
+                response.setStatus(false);
+                response.setMessage("the quantity is not availab");
+                return response;
+            default:
+                response.setStatus(false);
+                response.setMessage("the item not Exists in stock" + res);
+                return response;
         }
-        else if (res ==1){
-            response.setStatus(false);
-            response.setMessage("the item alredy exit in cart ");
-            return response;
         }
 
-        response.setStatus(true);
-        response.setMessage("the item" +p.toString() +"add to cart successfully");
-        return response;
-    }
     @DeleteMapping("/del")
     //the api for delet item from cart
-    public Response removeItemCart(@RequestBody Product p) {
+    public Response removeItemCart(@RequestParam int id) {
+        Product p= Datebase.stock.get(id);
         boolean res = cartService.Removeitem(p);
         Response response = new Response();
         if (!res) {
@@ -52,9 +59,9 @@ public class CartControler {
         response.setMessage("the item" +p.toString() +" remove from cart successfully");
         return response;
     }
-    @GetMapping("/cart")
+    @GetMapping()
     //api for view items and total price
-    Cart getcart(){
+    public Cart getcart(){
     return cartService.getCart();
     }
 
