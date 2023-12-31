@@ -7,13 +7,20 @@ import com.order_mangment_notficatetion.demo.model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+
+import java.util.*;
+
+
 
 @RestController
 @RequestMapping("/product")
 public class ProductControler {
+
     @Autowired
-    private ProductService productService;
+    private  final ProductService productService;
+    public ProductControler(ProductService productService){
+        this.productService=productService;
+    }
         @PostMapping("/add/")
         public Response addproduct(@RequestBody Product p) {
             boolean res = productService.AddProduct(p);
@@ -37,9 +44,8 @@ public class ProductControler {
         Datebase.test_set();
         return "done";
     }
-    @GetMapping("/a")
-    public Map<Integer,Product>GET(){
-     return Datebase.stock;
+    @GetMapping("/allproducts")
+    public List<Product>getproducts(){
+        return productService.getproducts();
     }
 
-}
